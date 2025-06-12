@@ -8,11 +8,10 @@ import {AbstractSigner} from "@openzeppelin-contracts/contracts/utils/cryptograp
 import {ECDSA} from "@openzeppelin-contracts/contracts/utils/cryptography/ECDSA.sol";
 import {Ownable} from "@openzeppelin-contracts/contracts/access/Ownable.sol";
 import {TokenCallbackHandler} from "@account-abstraction/contracts/accounts/callback/TokenCallbackHandler.sol"; // TokenCallbackHandler enables handling of various token types.
-import {UUPSUpgradeable} from "@openzeppelin-contracts/contracts/proxy/utils/UUPSUpgradeable.sol";
-import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
-import {OwnableUpgradeable} from "@openzeppelin-contracts-upgradeable/contracts/access/OwnableUpgradeable.sol";
+import {Ownable} from "@openzeppelin-contracts/contracts/access/Ownable.sol";
+import {UUPSUpgradeable} from "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
 
-contract GithubAbstractionAccount is AbstractSigner, IAccount, Ownable,Initializable, UUPSUpgradeable, TokenCallbackHandler {
+contract GithubAbstractionAccount is AbstractSigner, IAccount, Ownable, TokenCallbackHandler, UUPSUpgradeable {
     using ECDSA for bytes32;
     using ERC4337Utils for PackedUserOperation;
 
