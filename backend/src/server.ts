@@ -11,6 +11,9 @@ const webhookPath = "/api/webhook";
 
 expressApp.use(createNodeMiddleware(app.webhooks, { path: webhookPath }));
 expressApp.get("/", (_req: Request, res: Response) => {
+
+
+    
   res.send("GitHub App is running.");
 });
 
