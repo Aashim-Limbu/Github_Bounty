@@ -49,6 +49,7 @@ export default (app: Probot) => {
       console.log(
         `PR #${pr.number} was merged by ${merger}, created by ${contributor}`
       );
+
       await context.octokit.issues.createComment(
         context.issue({
           issue_number: pr.number,
@@ -57,6 +58,7 @@ export default (app: Probot) => {
       );
     }
   );
+
   app.on(
     "pull_request.opened",
     async (context: Context<"pull_request.opened">) => {
@@ -71,4 +73,5 @@ export default (app: Probot) => {
       );
     }
   );
+
 };
