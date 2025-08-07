@@ -46,6 +46,10 @@ export default (app: Probot) => {
       context.log.info(
         `PR #${pr.number} was merged by ${merger}, created by ${contributor}`
       );
+      console.log(
+        `PR #${pr.number} was merged by ${merger}, created by ${contributor}`
+      );
+
       await context.octokit.issues.createComment(
         context.issue({
           issue_number: pr.number,
@@ -54,4 +58,20 @@ export default (app: Probot) => {
       );
     }
   );
+
+  app.on(
+    "pull_request.opened",
+    async (context: Context<"pull_request.opened">) => {
+      const pr = context.payload.pull_request;
+      const contributor = pr.user.login;
+
+      await context.octokit.issues.createComment(
+        context.issue({
+          issue_number: pr.number,
+          body: `👋 Thanks for the pull request, @${contributor}! Our maintainers will review it shortly.`,
+        })
+      );
+    }
+  );
+
 };
