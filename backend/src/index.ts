@@ -8,7 +8,6 @@ dotenv.config();
 const app = express();
 
 const middleware = createNodeMiddleware(appFn, {
-    
   probot: createProbot(),
 });
 
