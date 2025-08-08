@@ -1,7 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import appFn from "./probot/app";
-import { createNodeMiddleware, createProbot, Probot } from "probot";
+import { createNodeMiddleware, createProbot } from "probot";
 
 dotenv.config();
 
